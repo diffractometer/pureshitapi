@@ -32,6 +32,13 @@ Rails.application.configure do
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
 
+  # config/environments/development.rb
+  Rails.application.configure do
+    config.action_mailer.default_url_options = { :host => 'pureshitapi.dev' }
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = { :address => 'pureshitapi.dev', :port => 1025 }
+  end
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end

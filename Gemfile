@@ -30,7 +30,15 @@ gem 'pry'
 gem 'pry-rails'
 gem 'pry-remote'
 
+gem 'pundit'
+gem 'json'
+
 gem 'devise_token_auth'
+gem 'rack-cors', :require => 'rack/cors'
+
+gem 'omniauth-github'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
