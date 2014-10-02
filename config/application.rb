@@ -8,13 +8,19 @@ Bundler.require(*Rails.groups)
 
 module Pureshit
   class Application < Rails::Application
-    config.middleware.use Rack::Cors do
+    #config.middleware.use Rack::Cors do
+      #allow do
+        #origins '*'
+        #resource '*',
+          #:headers => :any,
+          #:expose  => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+          #:methods => [:get, :post, :options, :delete, :put]
+      #end
+    #end
+    config.middleware.insert_before ActionDispatch::Static, Rack::Cors do
       allow do
         origins '*'
-        resource '*',
-          :headers => :any,
-          :expose  => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
-          :methods => [:get, :post, :options, :delete, :put]
+        resource '*', :headers => :any, :methods => [:get, :post, :put, :delete, :options]
       end
     end
     # Settings in config/environments/* take precedence over those specified here.

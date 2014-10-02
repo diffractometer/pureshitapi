@@ -1,28 +1,25 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  respond_to :json
 
-  # GET /events
-  # GET /events.json
   def index
-    @events = Event.all
+    @data = Event.all
+    render json: {
+      status: "success",
+      data: @data
+    }
   end
 
-  # GET /events/1
-  # GET /events/1.json
   def show
   end
 
-  # GET /events/new
   def new
     @event = Event.new
   end
 
-  # GET /events/1/edit
   def edit
   end
 
-  # POST /events
-  # POST /events.json
   def create
     @event = Event.new(event_params)
 
@@ -37,8 +34,6 @@ class EventsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /events/1
-  # PATCH/PUT /events/1.json
   def update
     respond_to do |format|
       if @event.update(event_params)
@@ -51,8 +46,6 @@ class EventsController < ApplicationController
     end
   end
 
-  # DELETE /events/1
-  # DELETE /events/1.json
   def destroy
     @event.destroy
     respond_to do |format|
