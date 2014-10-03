@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by using :null_session
-  protect_from_forgery with: :null_session
+  # protect_from_forgery with: :null_session
+  protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format.json? }
   include DeviseTokenAuth::Concerns::SetUserByToken
   include Pundit
   before_action :configure_permitted_parameters, if: :devise_controller?
