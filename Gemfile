@@ -33,7 +33,7 @@ gem 'pry-remote'
 gem 'pundit'
 gem 'json'
 
-gem 'devise_token_auth'
+gem 'devise_token_auth', '0.1.29.beta7'
 gem 'rack-cors', :require => 'rack/cors'
 
 gem 'omniauth-github'
