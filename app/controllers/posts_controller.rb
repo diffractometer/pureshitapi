@@ -55,8 +55,16 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post.destroy
-    respond_with(@post)
+    if @post.destroy
+      return render json: {
+        status: "success"
+      }
+    else
+      return render json: {
+        status: "failure",
+        errors: @post.errors.messages
+      }, status: '400'
+    end
   end
 
   private
