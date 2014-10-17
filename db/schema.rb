@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141014191951) do
+ActiveRecord::Schema.define(version: 20141017180604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,29 +38,8 @@ ActiveRecord::Schema.define(version: 20141014191951) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "active"
   end
-
-  create_table "product_sales", force: true do |t|
-    t.string   "email"
-    t.string   "guid"
-    t.integer  "product_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "product_sales", ["product_id"], name: "index_product_sales_on_product_id", using: :btree
-
-  create_table "products", force: true do |t|
-    t.string   "name"
-    t.string   "permalink"
-    t.text     "description"
-    t.integer  "price"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "products", ["user_id"], name: "index_products_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email"
