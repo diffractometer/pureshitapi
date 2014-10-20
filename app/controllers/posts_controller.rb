@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
+
+private  
   def resource_params
-    params.permit(:id, :title, :body, :user_id)
-  end
-end
+    params.permit(:title, :body, :user_id, :file)
+  end                                           
+end                                             

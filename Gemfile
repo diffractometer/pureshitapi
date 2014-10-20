@@ -26,9 +26,9 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
-gem 'pry'
-gem 'pry-rails'
-gem 'pry-remote'
+gem 'pry', group: :development
+gem 'pry-rails', group: :development
+gem 'pry-remote', group: :development
 
 gem 'pundit'
 gem 'json'
@@ -43,6 +43,8 @@ gem 'omniauth-google-oauth2'
 gem 'newrelic_rpm'
 
 gem 'dragonfly', '~> 1.0.7'
+gem 'dragonfly-s3_data_store'
+gem 'rack-cache', :require => 'rack/cache'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

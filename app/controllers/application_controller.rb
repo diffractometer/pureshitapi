@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   respond_to :json
 
   def index
-    # allow for any scope
+    # allow any scope
     scope_name = params['scope'] || 'all'
 
     @data = model_name.send(scope_name)
