@@ -47,6 +47,7 @@ gem 'dragonfly-s3_data_store'
 gem 'rack-cache', :require => 'rack/cache'
 
 gem 'rmagick', '~> 2.13.3'
+gem 'rails_12factor', group: :production
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
