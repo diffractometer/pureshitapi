@@ -72,13 +72,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def model_name
-    controller_name.classify.constantize
-  end
-
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :nickname
     devise_parameter_sanitizer.for(:account_update) << :nickname
+  end
+
+  def model_name
+    controller_name.classify.constantize
   end
 
   def set_resource
