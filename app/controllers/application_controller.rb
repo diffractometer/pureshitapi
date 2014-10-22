@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   include DeviseTokenAuth::Concerns::SetUserByToken
   include Pundit
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :set_resource, only: [:show, :edit, :update, :destroy]
   respond_to :json
 
   def index
@@ -19,6 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   def show
+    @resource = model_name.find(params[:id])
     render json: {
       status: "success",
       data: @resource
@@ -49,6 +49,8 @@ class ApplicationController < ActionController::Base
   end
 
   def update
+    binding.pry_remote
+    @resource = model_name.find(params[:id])
     if @resource.update(resource_params)
       return render json: @resource
     else
@@ -60,6 +62,7 @@ class ApplicationController < ActionController::Base
   end
 
   def destroy
+    @resource = model_name.find(params[:id])
     if @resource.destroy
       return render json: {
         status: "success"
@@ -81,7 +84,4 @@ class ApplicationController < ActionController::Base
     controller_name.classify.constantize
   end
 
-  def set_resource
-    @resource = model_name.find(params[:id])
-  end
 end
