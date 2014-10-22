@@ -14,7 +14,7 @@ Dragonfly.app.configure do
     # server_root: Rails.root.join('public')
   
   datastore :s3,
-    bucket_name:       'hunterhusar-production',
+    bucket_name:       'pureshit-production-uploads',
     access_key_id:     Rails.application.secrets.aws_key,
     secret_access_key: Rails.application.secrets.aws_secret,
     url_scheme:        'https',
