@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  dragonfly_accessor :file   # defines a reader/writer for image
+  dragonfly_accessor :image   # defines a reader/writer for image
   belongs_to :user
   has_many :attachments, as: :resource
 

@@ -43,11 +43,11 @@ ActiveRecord::Schema.define(version: 20141022235437) do
     t.string   "title"
     t.text     "body"
     t.integer  "user_id"
+    t.boolean  "active"
+    t.string   "image_uid"
+    t.string   "image_name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "active"
-    t.string   "file_uid"
-    t.string   "file_name"
   end
 
   create_table "users", force: true do |t|
