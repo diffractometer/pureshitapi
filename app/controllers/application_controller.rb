@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by using :null_session
   protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format.json? }
   include DeviseTokenAuth::Concerns::SetUserByToken
   include Pundit
@@ -7,9 +6,7 @@ class ApplicationController < ActionController::Base
   respond_to :json
 
   def index
-    # allow any scope
     scope_name = params['scope'] || 'all'
-
     @data = model_name.send(scope_name)
     render json: {
       status: "success",
@@ -18,7 +15,8 @@ class ApplicationController < ActionController::Base
   end
 
   def show
-    @resource = model_name.find(params[:id])
+    scope_name = params['scope'] || 'all'
+    @resource = model_name.show_data(params[:id], scope_name)
     render json: {
       status: "success",
       data: @resource
@@ -49,9 +47,9 @@ class ApplicationController < ActionController::Base
   end
 
   def update
-    binding.pry_remote
     @resource = model_name.find(params[:id])
-    if @resource.update(resource_params)
+    if @resource.update_attributes(resource_params)
+      @resource.reload
       return render json: @resource
     else
       return render json: {
@@ -82,6 +80,10 @@ class ApplicationController < ActionController::Base
 
   def model_name
     controller_name.classify.constantize
+  end
+
+  def hello
+    render :json => "Hello World!"
   end
 
 end

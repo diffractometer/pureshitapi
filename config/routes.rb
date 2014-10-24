@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   resources :posts
-  # resources :events
   resources :users
+  resources :attachments
 
-  root :to => "pages#hello"
+  root :to => "application#hello"
 
   mount_devise_token_auth_for 'User', at: '/auth'
   # The priority is based upon order of creation: first created -> highest priority.
