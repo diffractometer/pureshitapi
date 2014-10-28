@@ -1,7 +1,7 @@
 class Post < ActiveRecord::Base
   dragonfly_accessor :image   # defines a reader/writer for image
   belongs_to :user
-  has_many :attachments, as: :resource
+  has_many :attachments, as: :resource, dependent: :destroy
   validates :title, presence: true
   validate :attachments_count
  
